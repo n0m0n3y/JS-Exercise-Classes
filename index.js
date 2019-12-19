@@ -98,12 +98,12 @@ drive(distance){
   }else{
     this.odometer += max;
     this.tank = 0;
-  return `I ran out of fule at ${this.odometer} miles! `
+  return `I ran out of fule at ${this.odometer} miles! `;
 
 
- }
- }
-}
+ }// else end
+ }//drive end
+}//car end
 
 /*
   TASK 3
@@ -168,7 +168,7 @@ gradeRandom(){
   return `${this.name} FlexTime!`;
 }
 
-}
+}//end graderandom
 }
 /*
   TASK 5
