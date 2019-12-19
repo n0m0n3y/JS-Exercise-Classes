@@ -78,7 +78,31 @@ return this.stomach = [];
 */
 
 class Car {
+constructor(model,milesPerGallon){
+  this.model = model;
+  this.milesPerGallon = milesPerGallon;
+  this.tank = 0;
+  this.odometer = 0;
+}
+fill(gallons){
+return this.tank += gallons;
+  
 
+}
+drive(distance){
+  let fuelUsed = distance / this.milesPerGallon;
+  let max = this.tank * this.milesPerGallon;
+  if (this.tank >= fuelUsed ){
+    this.odometer += distance;
+    this.tank -= distance / this.milesPerGallon;
+  }else{
+    this.odometer += max;
+    this.tank = 0;
+  return `I ran out of fule at ${this.odometer} miles! `
+
+
+ }
+ }
 }
 
 /*
@@ -94,8 +118,16 @@ class Car {
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
-
+constructor(arg){
+  this.name = arg.name;
+  this.age = arg.age;
+  this.location =arg.location;
 }
+speak(){
+  return `Hello my name is ${this.name}, I am from ${this.location}.`;
+}//ends method 
+
+}// Ends class
 
 /*
   TASK 4
@@ -111,10 +143,23 @@ class Lambdasian {
         + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
-class Instructor {
-
+class Instructor extends Lambdasian{
+  constructor(arg){
+    super(arg);
+    this.specialty = arg.specialty;
+    this.favLanguage = arg.favLanguage;
+    this.catchPhrase = arg.catchPhrase;
+    
+  }
+demo(subject){
+return `Today we are learning about ${subject}`;
 }
 
+grade(student,subject){
+  return `${student.name} receives a perfect score on ${subject}`;
+
+}
+}
 /*
   TASK 5
     - Write a Student class extending Lambdasian.
@@ -130,8 +175,22 @@ class Instructor {
         + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
-class Student {
-
+class Student extends Lambdasian{
+  constructor(arg){
+    super(arg);
+    this.previousBackground = arg.previousBackground;
+    this.className = arg.className;
+    this.favSubjects = arg.favSubjects;
+  }
+  listSubjects(){
+    return `${this.favSubjects}`;
+  }
+  PRAssignment(subject){
+  return `${this.name} has submitted a PR for ${subject}`;
+}
+  sprintChallenge(subject){
+  return `${this.name} has begun sprint challenge on ${subject}`;
+}
 }
 
 /*
@@ -147,8 +206,19 @@ class Student {
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
-class ProjectManager {
-
+class ProjectManager extends Instructor{
+  constructor(arg){
+    super(arg);
+    this.gradClassName = arg.gradClassName;
+    this.favInstructor = arg.favInstructor;
+  }
+standUp(channel){
+  return `${this.name} announces to ${channel}, @channel standy times!`;
+}
+debugsCode(student,subject){
+  return `${this.name} debugs ${student.name}'s code on ${subject}`;
+  
+}
 }
 
 /*
