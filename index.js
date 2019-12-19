@@ -122,10 +122,11 @@ constructor(arg){
   this.name = arg.name;
   this.age = arg.age;
   this.location =arg.location;
+  this.Grade = 70;
 }
 speak(){
   return `Hello my name is ${this.name}, I am from ${this.location}.`;
-}//ends method 
+  }//ends method 
 
 }// Ends class
 
@@ -157,6 +158,15 @@ return `Today we are learning about ${subject}`;
 
 grade(student,subject){
   return `${student.name} receives a perfect score on ${subject}`;
+
+}
+gradeRandom(){
+  const computerGuess = Math.floor(Math.random() * 100);
+  if (computerGuess >= this.Grade){
+  return `${this.name} can Graduate!`;
+}else{
+  return `${this.name} FlexTime!`;
+}
 
 }
 }
