@@ -122,7 +122,7 @@ constructor(arg){
   this.name = arg.name;
   this.age = arg.age;
   this.location =arg.location;
-  this.Grade = 70;
+  
 }
 speak(){
   return `Hello my name is ${this.name}, I am from ${this.location}.`;
@@ -160,15 +160,11 @@ grade(student,subject){
   return `${student.name} receives a perfect score on ${subject}`;
 
 }
-gradeRandom(){
-  const computerGuess = Math.floor(Math.random() * 100);
-  if (computerGuess >= this.Grade){
-  return `${this.name} can Graduate!`;
-}else{
-  return `${this.name} FlexTime!`;
+changeGrade(student){
+  student.grade += Math.floor(Math.random()* 100);
+  return student.grade;
 }
-
-}//end graderandom
+ 
 }
 /*
   TASK 5
@@ -191,6 +187,7 @@ class Student extends Lambdasian{
     this.previousBackground = arg.previousBackground;
     this.className = arg.className;
     this.favSubjects = arg.favSubjects;
+    this.grade = arg.grade|| 99;
   }
   listSubjects(){
     return `${this.favSubjects}`;
@@ -201,7 +198,15 @@ class Student extends Lambdasian{
   sprintChallenge(subject){
   return `${this.name} has begun sprint challenge on ${subject}`;
 }
+graduate() {
+  if(this.grade >= 70) {
+    return `${this.name}, with this ${this.grade}% you are ready graduate.`;
+  } else {
+    return `Sorry Time to Flex. :)`;
+  }
 }
+}
+
 
 /*
   TASK 6
@@ -239,6 +244,29 @@ debugsCode(student,subject){
       + This method, when called, will check the grade of the student and see if they're ready to graduate from Lambda School
       + If the student's grade is above a 70% let them graduate! Otherwise go back to grading their assignments to increase their score.
 */
+
+const brit = new Instructor({
+  name: 'brit',
+  location: 'Canada',
+  age: 99,
+  favLanguage: 'Javascript Language',
+  specialty: 'Super awesome Instructor',
+  catchPhrase: 'My students are awesome'
+});
+
+    
+
+
+const Jelly = new Student({
+  name: 'Jelly',
+  previousBackground: 'Student',
+  className: 'Web27',
+  favSubjects: 'Computer Science',
+  grade: 90,
+});
+console.log(brit.changeGrade(Jelly,1 ,100));
+console.log(Jelly.graduate());
+
 
 ///////// END OF CHALLENGE /////////
 ///////// END OF CHALLENGE /////////
